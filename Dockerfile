@@ -16,6 +16,7 @@ RUN apt-get install -y hadoop-hdfs-namenode \
     impala impala-catalog impala-server \
     impala-state-store impala-shell \
     kudu-master kudu-tserver \
+    spark-core spark-history-server spark-master spark-worker spark-python \    
     rsyslog
 
 COPY ./etc /etc/cdh/
@@ -28,6 +29,7 @@ RUN echo "Configuring Hadoop, Hive and Impala" \
  && ln -sf /etc/cdh/hdfs-site.xml /etc/impala/conf/  \
  && ln -sf /etc/cdh/core-site.xml /etc/impala/conf/  \
  && ln -sf /etc/cdh/hive-site.xml /etc/impala/conf/  \
+ && ln -sf /etc/cdh/hive-site.xml /etc/spark/conf/  \ 
  && mkdir -p /var/run/hdfs-sockets \
  && chown hdfs:hadoop /var/run/hdfs-sockets \
  && echo "Formatting HDFS..." \
