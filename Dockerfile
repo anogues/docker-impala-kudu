@@ -1,4 +1,4 @@
-FROM ubuntu:14.04
+FROM ubuntu:16.04
 
 ENV DEBIAN_FRONTEND noninteractive
 
@@ -6,7 +6,7 @@ RUN apt-get update && apt-get install -y curl
 
 ADD cloudera.list /etc/apt/sources.list.d/
 
-RUN curl -o archive.key https://archive.cloudera.com/cdh5/ubuntu/trusty/amd64/cdh/archive.key \
+RUN curl -o archive.key https://archive.cloudera.com/cdh5/ubuntu/xenial/amd64/cdh/archive.key \
     && apt-key add archive.key \
     && apt-key update \
     && apt-get update
